@@ -21,7 +21,7 @@ int main()
     strcpy(nombres[1],"Fausto");
     strcpy(nombres[2],"Xavier");
     strcpy(nombres[3],"Anabel");
-    strcpy(nombres[4],"sebastian");
+    strcpy(nombres[4],"Sebastian");
 
     printf("Vector sin ordenar:\n");
     mostrarNombres(nombres, FILAS);
