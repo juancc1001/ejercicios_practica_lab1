@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568817749 source:c:\users\alumno\desktop\ejercicios_practica_lab1\ejercicioestructuraabm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
