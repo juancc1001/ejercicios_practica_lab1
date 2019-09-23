@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#define TAM 5
+#define TAM 20
 
 typedef struct{
     int dia;
@@ -29,23 +29,32 @@ int menu();
 int buscarLibre(eAlumno alumnos[], int tam);
 int buscarAlumno(eAlumno alumno[], int leg, int tam);
 int altaAlumno (eAlumno alumnos[], int tam);
+int altaAlumnoAuto(eAlumno alumnos[], int tam, int leg);
 int bajaAlumno(eAlumno alumno[], int tam);
 int modificarAlumno(eAlumno alumno[], int tam);
+int harcodearAlumnos(eAlumno alumnos[], int tam, int cant);
 eAlumno newAlumno (int legajo, int edad, int n1, int n2, float promedio, char sexo, char nombre[], eFecha fecha);
 
 
 int main()
 {
+    int legajo = 2000;
     char salir = 'n';
     eAlumno alumnos [TAM];
+
     inicializarAlumnos(alumnos, TAM);
+
+    legajo = legajo + harcodearAlumnos(alumnos, TAM, 10);
 
     do{
 
         switch(menu()){
     case 1:
 
-        altaAlumno (alumnos, TAM);
+        //altaAlumno (alumnos, TAM);
+        if(altaAlumnoAuto(alumnos, TAM, legajo)){
+            legajo++;
+        }; //da un valor de legajo segun el orden, mas de 2000(valor int legajo)
         system ("pause");
         break;
 
@@ -80,6 +89,36 @@ int main()
 
     return 0;
 }
+
+int harcodearAlumnos(eAlumno alumnos[], int tam, int cant){
+
+    int contador=0;
+    eAlumno listaAux[10] = {
+        {2000, "Juan", 25, 'm', 8, 6, 7, {12, 7, 2015}, 0},
+        {2001, "Ana", 24, 'f', 8, 8, 8, {4, 7, 2015}, 0},
+        {2002, "Maria", 29, 'f', 9, 7, 8, {9, 8, 2015}, 0},
+        {2003, "Aldo", 31, 'm', 5, 9, 7, {25, 7, 2015}, 0},
+        {2004, "Fausto", 18, 'm', 7, 5, 6, {29, 7, 2015}, 0},
+        {2005, "Raul", 21, 'm', 9, 7, 8.5, {30, 6, 2015}, 0},
+        {2006, "Lucia", 22, 'f', 10, 10, 10, {14, 7, 2015}, 0},
+        {2007, "Jose", 21, 'm', 6, 4, 5, {2, 12, 2015}, 0},
+        {2008, "Clara", 32, 'f', 7, 6, 6.5, {29, 7, 2015}, 0},
+        {2009, "Jimena", 29, 'f', 9, 8, 8.5, {17, 7, 2015}, 0},
+    };
+
+    if(cant<=tam  && cant<11){
+
+        for(int i=0; i<cant; i++){
+
+            alumnos[i]=listaAux[i];
+            contador++;
+        }
+    }
+
+
+return contador;
+}
+
 
 int menu(){
     int opcion;
@@ -245,6 +284,113 @@ int altaAlumno (eAlumno alumnos[], int tam){
 
         return ok;
 }
+
+int altaAlumnoAuto(eAlumno alumnos[], int tam, int leg){
+
+    int ok = 0;
+    int indice;
+    int legajo;
+    int edad;
+    int n1;
+    int n2;
+    float promedio;
+    char sexo;
+    char nombre[50];
+    eFecha fecha;
+
+    indice = buscarLibre(alumnos, tam);
+    if(indice==-1){
+
+        printf("Error, sistema completo. No se pueden realizar altas.\n\n");
+        system("pause");
+
+    }else{
+
+            legajo=leg;
+
+            printf("ingrese nombre:");
+            fflush(stdin);
+            gets(nombre);
+            while(strlen(nombre)>19){
+                printf("Error. Nombre muy largo, ingrese nuevamente: ");
+                gets(nombre);
+            }
+
+            printf("Ingrese edad:");
+            scanf("%d", &edad);
+            while(edad<0){
+                printf("Error. Edad no admitida: ");
+                scanf("%d", &edad);
+            }
+
+
+            printf("Ingrese sexo:");
+            fflush(stdin);
+            scanf("%c", &sexo);
+            while(sexo!='m' && sexo!='f'){
+                printf("Error. Sexo no admitido: ");
+                scanf("%c", &sexo);
+            }
+
+            printf("Ingrese nota parcial 1:");
+            scanf("%d", &n1);
+            while(n1<0 || n1>10){
+                printf("Error. La nota debe ser un numero entre 0 y 10. Ingrese nuevamente: ");
+                scanf("%d", &n1);
+            }
+
+
+            printf("Ingrese nota parcial 2:");
+            scanf("%d", &n2);
+            while(n1<0 || n1>10){
+                printf("Error. La nota debe ser un numero entre 0 y 10. Ingrese nuevamente: ");
+                scanf("%d", &n2);
+            }
+
+            promedio = (float) (n1 + n2) / 2;
+
+            printf("Ingrese dia de ingreso: ");
+            scanf("%d", &fecha.dia);
+            while(fecha.dia<0 || fecha.dia>31){
+                printf("Error. Ingrese nuevamente: ");
+                scanf("%d", &fecha.dia);
+            }
+
+            printf("Ingrese mes de ingreso: ");
+            scanf("%d", &fecha.mes);
+            while(fecha.mes<0 || fecha.mes>12){
+                printf("Error. Ingrese nuevamente: ");
+                scanf("%d", &fecha.mes);
+            }
+
+            printf("Ingrese anio de ingreso: ");
+            scanf("%d", &fecha.anio);
+            while(fecha.anio<1950){
+                printf("Error. Ingrese nuevamente: ");
+                scanf("%d", &fecha.anio);
+            }
+
+            alumnos[indice] = newAlumno(legajo, edad, n1, n2, promedio, sexo, nombre, fecha);
+            ok = 1;
+            system("cls");
+        }
+
+
+        if(ok==1){
+
+            printf("alta exitosa\n");
+
+        }else{
+
+            printf("No se ha realizado el alta\n");
+
+        }
+
+        return ok;
+
+
+}
+
 
 int bajaAlumno(eAlumno alumno[], int tam){
 
@@ -453,7 +599,7 @@ eAlumno newAlumno (int legajo, int edad, int n1, int n2, float promedio, char se
 
 
 void mostrarAlumno(eAlumno x){
-    printf("  %4d      %s      %d     %c    %d   %d   %.2f    %02d/%02d/%d\n",
+    printf("  %4d   %10s     %d     %c     %d        %d       %.2f    %02d/%02d/%d\n",
            x.legajo,
            x.nombre,
            x.edad,
@@ -469,8 +615,9 @@ void mostrarAlumno(eAlumno x){
 void mostrarAlumnos(eAlumno vec[], int tam){
     int flag=0;
 
-    printf(" Legajo    Nombre     Edad    Sexo    Nota1    Nota2    Promedio FIngreso\n");
+    printf(" Legajo       Nombre   Edad  Sexo  Nota1    Nota2  Promedio    FIngreso\n");
     for(int i=0; i < tam; i++){
+
         if(vec[i].isEmpty==0){
         mostrarAlumno(vec[i]);
         flag=1;
@@ -478,7 +625,7 @@ void mostrarAlumnos(eAlumno vec[], int tam){
     }
 
     if(flag==0){
-        printf("Error. No hay alumnos en el sistema.\n");
+        printf("\n\nError. No hay alumnos en el sistema.\n");
     }
 
 
@@ -491,12 +638,14 @@ void ordenarAlumnos(eAlumno vec[], int tam){
 
     for(int i= 0; i < tam-1 ; i++){
         for(int j= i+1; j <tam; j++){
-            if( vec[i].legajo > vec[j].legajo){
+            if( vec[i].promedio < vec[j].promedio){
                 auxAlumno = vec[i];
                 vec[i] = vec[j];
                 vec[j] = auxAlumno;
             }
         }
     }
+    printf("---Alumnos ordenados por promedio---\n\n");
 
 }
+
