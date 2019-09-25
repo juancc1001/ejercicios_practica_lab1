@@ -38,3 +38,26 @@
 	"Alumno.h"
 	"Carrera.h"
 
+1569411686 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmcarreraalumno\alumno.c
+	"Alumno.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1569411686 c:\users\alumno\desktop\ejercicios_practica_lab1\abmcarreraalumno\alumno.h
+	"Carrera.h"
+
+1569411686 c:\users\alumno\desktop\ejercicios_practica_lab1\abmcarreraalumno\carrera.h
+
+1569411686 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmcarreraalumno\carrera.c
+	"Carrera.h"
+
+1569421441 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmcarreraalumno\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"Alumno.h"
+	"Carrera.h"
+
