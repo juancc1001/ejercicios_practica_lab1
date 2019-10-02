@@ -65,26 +65,26 @@
 	"carrera.h"
 	"alumno.h"
 
-1569844358 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\alumno.c
+1570027246 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\alumno.c
 	"alumno.h"
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
 
-1569844358 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\alumno.h
+1570016414 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\alumno.h
 	"carrera.h"
 
-1569844358 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\carrera.h
+1570016414 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\carrera.h
 
-1569844358 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\carrera.c
+1570016414 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\carrera.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
 	"carrera.h"
 
-1569856873 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\main.c
+1570028611 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -94,7 +94,7 @@
 	"comida.h"
 	"almuerzo.h"
 
-1569853681 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\almuerzo.c
+1570028703 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\almuerzo.c
 	"alumno.h"
 	"almuerzo.h"
 	"carrera.h"
@@ -104,12 +104,12 @@
 	<conio.h>
 	<string.h>
 
-1569852630 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\almuerzo.h
+1570016414 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\almuerzo.h
 	"comida.h"
 
-1569856844 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\comida.h
+1570016414 c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\comida.h
 
-1569856844 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\comida.c
+1570016414 source:c:\users\alumno\desktop\ejercicios_practica_lab1\abmalumnocarreraslibraryinformes\comida.c
 	"alumno.h"
 	"almuerzo.h"
 	"carrera.h"
