@@ -61,3 +61,26 @@
 	"Alumno.h"
 	"Carrera.h"
 
+1570486376 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\abmcarreraalumno\alumno.c
+	"Alumno.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1570486376 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\abmcarreraalumno\alumno.h
+	"Carrera.h"
+
+1570486376 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\abmcarreraalumno\carrera.h
+
+1570486376 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\abmcarreraalumno\carrera.c
+	"Carrera.h"
+
+1570486376 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\abmcarreraalumno\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"Alumno.h"
+	"Carrera.h"
+

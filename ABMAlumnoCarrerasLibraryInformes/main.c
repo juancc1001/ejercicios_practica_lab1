@@ -8,7 +8,7 @@
 #include "almuerzo.h"
 
 
-#define TAM 10
+#define TAM 12
 #define TAMC 3
 #define TAMCOM 5
 #define TAMAL 20

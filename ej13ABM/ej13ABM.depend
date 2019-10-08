@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1570485965 source:c:\users\pc-1\desktop\juan el programadore\tp_laboratorio_1\ej13abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1570575404 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\ej13abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

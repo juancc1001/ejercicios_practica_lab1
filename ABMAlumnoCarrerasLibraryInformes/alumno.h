@@ -2,6 +2,7 @@
 
 #ifndef ALUMNO_H_INCLUDED
 #define ALUMNO_H_INCLUDED
+
 typedef struct
 {
     int dia;
@@ -22,7 +23,6 @@ typedef struct
     int idCarrera;
     int isEmpty;
 } eAlumno;
-
 
 #endif // ALUMNO_H_INCLUDED
 
