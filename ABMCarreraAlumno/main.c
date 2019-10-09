@@ -13,6 +13,7 @@ typedef struct
     int dia;
     int mes;
     int anio;
+
 } eFecha;
 
 typedef struct
@@ -27,6 +28,7 @@ typedef struct
     eFecha fechaIngreso;
     int idCarrera;
     int isEmpty;
+
 } eAlumno;
 
 typedef struct{

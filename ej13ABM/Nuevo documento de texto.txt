@@ -1,0 +1,34 @@
+1) Se solicita realizar una aplicación que permita administrar los libros de una libreria.
+
+Datos Libro:
+
+Código del libro (1 a 5.000) Validar
+Título (máximo 50 caracteres) Validar
+Código del Autor (1 a 500) Validar
+Stock (numerico)
+ALTAS: No es necesario el ingreso de todos los libros.
+
+MODIFICAR: Se ingresará el Código del Libro, permitiendo modificar:
+
+Código del libro
+Título
+Código del Autor
+Stock
+BAJA: Se ingresa el Código del Libro.
+
+ORDENAR: Se ordenara el array por titulo y ante igualdad por código
+
+LISTAR LIBROS: Realizar un solo listado con todos los libros
+
+2) Partiendo del ejercicio de la clase 13 incorporar la entidad AUTOR con los siguientes datos:
+
+Datos del Autor:
+
+Código del Autor (1 a 500) Validar
+Nombre (máximo 50 caracteres) Validar
+Apellido (máximo 50 caracteres) Validar
+ALTAS: No es necesario el ingreso de todos los autores.
+
+BAJA: Se ingresa el Código del autor
+
+LISTAR LIBROS: Realizar un solo listado con todos los libros, en el deberá figurar el apellido del autor.

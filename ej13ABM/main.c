@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define TAM 10
+#define TAMA 10
 
 typedef struct{
 
@@ -13,6 +14,15 @@ typedef struct{
     int isEmpty;
 
 }eLibro;
+
+typedef struct{
+
+    int idAutor;
+    char nombre[50];
+    char apellido[50];
+    int isEmpty;
+
+}eAutores;
 
 
 int menu();
@@ -25,26 +35,47 @@ eLibro addLibro(int idLibro, char nombre[], int idAutor, int stock);
 int altaLibro(eLibro vec[], int tam);
 int menuModificacion();
 int buscarXId(int codigoBusqueda, eLibro vec[], int tam);
-void mostrarLibro(eLibro x);
-void mostrarLibros(eLibro vec[], int tam);
+void mostrarLibro(eLibro x, eAutores vec[], int tamA);
+void mostrarLibros(eLibro vec[], int tam, eAutores autores[], int tamA);
 void verifyString(char nombre[], char aux[], int tam);
 void modificarLibro(eLibro vec[], int tam);
 void bajaLibro(eLibro vec[], int tam);
 void sortLibros(eLibro vec[], int tam);
 
+eAutores addAutor(int idAutor, char nombre[], char apellido[]);
+int altaAutor(eAutores vec[], int tamA);
+void mostrarAutor(eAutores x);
+void mostrarAutores(eAutores vec[], int tam);
+int buscarLibreA(eAutores vec[], int tam);
+int cargarApellidoAutor(int idAutor, eAutores vec[], int tamA, char apellido[]);
+
 int main()
 {
+    eAutores autores[TAMA] ={
+    {100, "Antonie", "St Xupery", 0},
+    {112, "Franco", "Kafka", 0},
+    {102, "Homero", "Tompson", 0},
+    {101, "Aldo", "Huxley", 0},
+    {100, "Antonie", "St Xupery", 1},
+    {100, "Antonie", "St Xupery", 1},
+    {100, "Antonie", "St Xupery", 1},
+    {100, "Antonie", "St Xupery", 1},
+    {100, "Antonie", "St Xupery", 1},
+    {100, "Antonie", "St Xupery", 1},
+
+    };
+
     eLibro lista[TAM] = {
-    {1004, "El principito", 1001, 50, 0},
-    {1274, "El principito", 1001, 24, 0},
-    {1005, "La Metamorfosis", 1012, 50, 0},
-    {1006, "Tomy y daly la novela", 1002, 30, 0},
-    {1007, "Un mundo feliz", 1001, 50, 0},
-    {1007, "Un mundo feliz", 1001, 50, 1},
-    {1007, "Un mundo feliz", 1001, 50, 1},
-    {1007, "Un mundo feliz", 1001, 50, 1},
-    {1007, "Un mundo feliz", 1001, 50, 1},
-    {1007, "Un mundo feliz", 1001, 50, 1},
+    {1004, "El principito", 100, 50, 0},
+    {1274, "El principito", 100, 24, 0},
+    {1005, "La Metamorfosis", 112, 50, 0},
+    {1006, "Tomy y daly la novela", 102, 30, 0},
+    {1007, "Un mundo feliz", 101, 50, 0},
+    {1007, "Un mundo feliz", 101, 50, 1},
+    {1007, "Un mundo feliz", 101, 50, 1},
+    {1007, "Un mundo feliz", 101, 50, 1},
+    {1007, "Un mundo feliz", 101, 50, 1},
+    {1007, "Un mundo feliz", 101, 50, 1},
     };
     char salir = 'n';
 
@@ -69,14 +100,33 @@ case 2:
     //modificaciones
     break;
 case 3:
+    if(verifyDataBase(lista, TAM)==1){
     bajaLibro(lista, TAM);
+    }else{
+    printf("Error, aun no hay datos en el sistema");
+    }
     //bajas
     break;
 case 4:
     sortLibros(lista, TAM);
-    mostrarLibros(lista, TAM);
+    mostrarLibros(lista, TAM, autores, TAMA);
     break;
 case 5:
+    //alta autor
+    if(altaAutor(autores, TAMA)){
+        printf("\n\nAlta exitosa\n");
+    }else{
+        printf("\n\nEl alta no ha podido realizarse\n");
+    }
+    break;
+case 6:
+    //baja autor
+    break;
+    case 7:
+    mostrarAutores(autores, TAMA);
+    //listar autores
+    break;
+case 8:
     printf("confirma salida? ingrese y/n: ");
     fflush(stdin);
     scanf("%c", &salir);
@@ -104,7 +154,10 @@ int menu(){
     printf("2- Modificaciones\n");
     printf("3- Bajas\n");
     printf("4- Listar Libros\n");
-    printf("5- Salir\n");
+    printf("5- Alta Autor\n");
+    printf("6- Baja autor\n");
+    printf("7- Listar autores\n");
+    printf("8- Salir\n");
     printf("\nIngrese opcion: ");
     scanf("%d", &opcion);
 
@@ -381,6 +434,24 @@ int buscarLibre(eLibro vec[], int tam){
     return indice;
 }
 
+int buscarLibreA(eAutores vec[], int tam){
+
+    int indice=-1;
+
+    for(int i=0; i<tam; i++){
+
+        if(vec[i].isEmpty==1){
+
+            indice=i;
+            break;
+
+        }
+    }
+
+    return indice;
+}
+
+
 int buscarXId(int codigoBusqueda, eLibro vec[], int tam){
 
     int indice;
@@ -398,17 +469,18 @@ int buscarXId(int codigoBusqueda, eLibro vec[], int tam){
     return indice;
 }
 
-void mostrarLibros(eLibro vec[], int tam){
+void mostrarLibros(eLibro vec[], int tam, eAutores autores[], int tamA){
 
     int flag=0;
 
-    printf("Id Libro   Nombre   Id Autor   Stock\n");
+    system("cls");
+    printf("Id Libro   Nombre   Id Autor     Apellido Autor     Stock\n");
 
     for(int i=0; i<tam; i++){
 
         if(vec[i].isEmpty==0){
 
-            mostrarLibro(vec[i]);
+            mostrarLibro(vec[i],autores, tamA);
             flag=1;
 
         }
@@ -416,16 +488,19 @@ void mostrarLibros(eLibro vec[], int tam){
 
     if(flag==0){
 
-        printf("Error. No hay alumnos en el sistema");
+        printf("Error. No hay datos en el sistema");
 
     }
 
 }
 
 
-void mostrarLibro(eLibro x){
+void mostrarLibro(eLibro x, eAutores vec[], int tamA){
 
-    printf("%5d   %20s   %5d   %4d\n", x.idLibro, x.nombre, x.idAutor, x.stock);
+    char apellido[50];
+    cargarApellidoAutor(x.idAutor, vec, tamA, apellido);
+
+    printf("%5d   %20s   %5d    %20s     %4d\n", x.idLibro, x.nombre, x.idAutor, apellido, x.stock);
 
 }
 
@@ -469,3 +544,114 @@ void sortLibros(eLibro vec[], int tam){
     }
 
 }
+
+int altaAutor(eAutores vec[], int tamA){
+
+    int ok=-1;
+    int auxInt;
+    int idAutor;
+    int indice;
+    char nombre[50];
+    char apellido[50];
+    char auxChar[100];
+
+    system("cls");
+    printf("***** ALTA AUTOR *****\n\n");
+
+    indice=buscarLibreA(vec, tamA);
+
+    if(indice==-1){
+
+        printf("Error, no hay espacio en el sistema\n");
+
+    }else{
+
+    do{
+    printf("Ingrese codigo del autor: ");
+    scanf("%d", &auxInt);
+    }while(verifyIdAutor(auxInt)==-1);
+    idAutor=auxInt;
+
+    printf("ingrese nombre del autor: ");
+    fflush(stdin);
+    gets(auxChar);
+    verifyString(nombre, auxChar, 50);
+
+    printf("ingrese apellido del autor: ");
+    fflush(stdin);
+    gets(auxChar);
+    verifyString(apellido, auxChar, 50);
+
+    vec[indice] = addAutor(idAutor, nombre, apellido);
+    ok=1;
+
+
+    }
+
+    return ok;
+
+}
+
+eAutores addAutor(int idAutor, char nombre[], char apellido[]){
+
+    eAutores autor;
+
+    strcpy(autor.apellido,apellido);
+    strcpy(autor.nombre,nombre);
+    autor.idAutor=idAutor;
+    autor.isEmpty=0;
+
+
+    return autor;
+
+}
+
+void mostrarAutores(eAutores vec[], int tam){
+
+
+    int flag=0;
+
+    system("cls");
+    printf("Id                   Apellido         nombre\n");
+
+    for(int i=0; i<tam; i++){
+
+        if(vec[i].isEmpty==0){
+
+            mostrarAutor(vec[i]);
+            flag=1;
+
+        }
+    }
+
+    if(flag==0){
+
+        printf("Error. No hay datos cargados en el sistema");
+
+    }
+
+}
+
+
+void mostrarAutor(eAutores x){
+
+    printf("%5d   %20s   %20s\n", x.idAutor, x.apellido, x.nombre);
+
+}
+
+int cargarApellidoAutor(int idAutor, eAutores vec[], int tamA, char apellido[]){
+
+    int ok=0;
+
+    for(int i=0; i<tamA; i++){
+
+        if(idAutor == vec[i].idAutor){
+
+            strcpy(apellido, vec[i].apellido);
+            ok=1;
+            break;
+        }
+    }
+    return ok;
+}
+
