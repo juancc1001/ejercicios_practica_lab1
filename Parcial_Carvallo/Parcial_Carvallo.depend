@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1570633817 source:c:\users\alumno\documents\codeblocks\parcial_carvallo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
