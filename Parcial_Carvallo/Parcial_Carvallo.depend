@@ -5,3 +5,148 @@
 	<string.h>
 	<conio.h>
 
+1570662496 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1571109528 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\auto.h
+	"colores.h"
+	"marcas.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\colores.h
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\marcas.h
+
+1571109642 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\colores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"colores.h"
+
+1571109327 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\fecha.h
+
+1571109580 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\marcas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"marcas.h"
+
+1571109746 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\servicios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"servicios.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\servicios.h
+
+1571109327 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\trabajos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"trabajos.h"
+	"servicios.h"
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\trabajos.h
+	"auto.h"
+	"servicios.h"
+	"fecha.h"
+
+1571109477 source:c:\users\pc-1\desktop\parcial_carvallo - copia - copia - copia - copia\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+	"servicios.h"
+	"trabajos.h"
+
+1571109528 source:c:\users\pc-1\desktop\parcial_carvallo\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\auto.h
+	"colores.h"
+	"marcas.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\colores.h
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\marcas.h
+
+1571109642 source:c:\users\pc-1\desktop\parcial_carvallo\colores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"colores.h"
+
+1571109327 source:c:\users\pc-1\desktop\parcial_carvallo\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\fecha.h
+
+1571109580 source:c:\users\pc-1\desktop\parcial_carvallo\marcas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"marcas.h"
+
+1571109746 source:c:\users\pc-1\desktop\parcial_carvallo\servicios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"servicios.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\servicios.h
+
+1571110005 source:c:\users\pc-1\desktop\parcial_carvallo\trabajos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"trabajos.h"
+	"servicios.h"
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\parcial_carvallo\trabajos.h
+	"auto.h"
+	"servicios.h"
+	"fecha.h"
+
