@@ -303,3 +303,35 @@ eAuto newAuto(int idAuto, char patente[], int idMarca, int idColor, int modelo)
     return nuevoAuto;
 }
 
+void validarPatente(char patente[], eAuto autos[], int tamA){
+
+    printf("Ingrese patente: ");
+    fflush(stdin);
+    gets(patente);
+
+    int flag=0;
+
+    for(int i=0; i<tamA; i++){
+
+        if(strcmp(patente, autos[i].patente)==0){
+
+            flag=1;
+        }
+    }
+
+    while(flag==0){
+
+        printf("Patente no registrada, ingrese nuevamente");
+        fflush(stdin);
+        gets(patente);
+
+    for(int i=0; i<tamA; i++){
+
+        if(strcmp(patente, autos[i].patente)==0){
+            flag=1;
+        }
+
+    }
+    }
+
+}

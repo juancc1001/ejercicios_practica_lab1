@@ -111,38 +111,6 @@ void mostrarTrabajos(eTrabajo trabajos[], int tamT,  eServicio servicios[], int 
     printf("\n\n");
 }
 
-void validarPatente(char patente[10], eAuto autos[], int tamA){
-
-    printf("Ingrese patente: ");
-    fflush(stdin);
-    gets(patente);
-
-    int flag=0;
-
-    for(int i=0; i<tamA; i++){
-
-        if(strcmp(patente, autos[i].patente)==0){
-
-            flag=1;
-        }
-    }
-
-    while(flag==0){
-
-        printf("Patente no registrada, ingrese nuevamente");
-        fflush(stdin);
-        gets(patente);
-
-    for(int i=0; i<tamA; i++){
-
-        if(strcmp(patente, autos[i].patente)==0){
-            flag=1;
-        }
-
-    }
-    }
-
-}
 
 int buscarLibreTrabajo(eTrabajo trabajo[], int tamT){
 

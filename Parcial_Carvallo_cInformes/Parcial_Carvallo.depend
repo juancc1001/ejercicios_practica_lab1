@@ -225,3 +225,78 @@
 	"servicios.h"
 	"trabajos.h"
 
+1571109642 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\colores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"colores.h"
+
+1571109327 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\colores.h
+
+1571109327 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\fecha.h
+
+1571109580 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\marcas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"marcas.h"
+
+1571109327 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\marcas.h
+
+1571157834 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\servicios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"servicios.h"
+
+1571109327 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\servicios.h
+
+1571176934 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+
+1571176934 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\auto.h
+	"colores.h"
+	"marcas.h"
+
+1571176934 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\trabajos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"trabajos.h"
+	"servicios.h"
+	"fecha.h"
+
+1571109327 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\trabajos.h
+	"auto.h"
+	"servicios.h"
+	"fecha.h"
+
+1571177614 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial_carvallo_cinformes\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+	"servicios.h"
+	"trabajos.h"
+

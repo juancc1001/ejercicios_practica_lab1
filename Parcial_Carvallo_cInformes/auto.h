@@ -30,4 +30,4 @@ eAuto newAuto(int idAuto, char patente[], int idMarca, int idColor, int modelo);
 int altaAuto(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores[], int tamC);
 int bajaAuto(eAuto autos[], int tamA);
 int modificarAuto(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores[], int tamC);
-void validarPatente(char patente[10], eAuto autos[], int tamA);
+void validarPatente(char patente[], eAuto autos[], int tamA);

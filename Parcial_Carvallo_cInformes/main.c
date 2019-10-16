@@ -28,7 +28,7 @@ int cantidadXServicio(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eS
 void recaudadoMarcas(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eAuto autos[], int tamA, eMarca marcas[], int tamM);
 void recaudadoServicios(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
 void colorMasCompletos(eColor colores[], int tamC, eAuto autos[], int tamA, eTrabajo trabajos[], int tamT);
-
+void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
 
 
 int main()
@@ -272,6 +272,7 @@ void informes(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores
         break;
     case 6:
         //deuda de determinado vehiculo
+        deudaXAuto(autos, tamA, trabajos, tamT, servicios, tamS);
         break;
     case 7:
         //recaudado por marcas
@@ -467,4 +468,34 @@ void colorMasCompletos(eColor colores[], int tamC, eAuto autos[], int tamA, eTra
     }
     system("pause");
 
+}
+
+void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+
+    char patente[10];
+    float deuda=0;
+
+    system("cls");
+    printf("*** Deuda de Vehiculo ***\n\n");
+    validarPatente(patente, autos, tamA);
+
+    for(int i=0; i<tamT; i++ ){
+
+        if(strcmp(trabajos[i].patente, patente)==0 && trabajos[i].isEmpty==0){
+
+            for(int j=0; j<tamS; j++){
+
+                if(trabajos[i].idServicio==servicios[j].idServicio){
+
+                    deuda+=servicios[j].precio;
+
+                }
+            }
+        }
+    }
+
+    printf("\nPatente: %s\n", patente);
+    printf("Deuda: $%.2f\n\n\n", deuda);
+
+    system("pause");
 }
