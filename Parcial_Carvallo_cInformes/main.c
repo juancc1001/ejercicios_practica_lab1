@@ -23,12 +23,17 @@ int verifySystem(eAuto autos[], int tamA);
 //funciones informes
 int menuInformes();
 void informes(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores[], int tamC, eServicio servicios[], int tamS, eTrabajo trabajos[], int tamT);
-int trabajosEnFecha(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eAuto autos[], int tamA);
-int cantidadXServicio(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eServicio servicios[], int tamS);
-void recaudadoMarcas(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eAuto autos[], int tamA, eMarca marcas[], int tamM);
-void recaudadoServicios(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
-void colorMasCompletos(eColor colores[], int tamC, eAuto autos[], int tamA, eTrabajo trabajos[], int tamT);
-void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
+void listarAutosNegros (eAuto autos[], int tamA, eColor colores[], int tamC, eMarca marcas[], int tamM);
+void autosXMarca(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores[], int tamC);
+void trabajosXAuto(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eServicio servicios[], int tamS, eColor colores[], int tamC, eMarca marcas[], int tamM);
+void autosSinTrabajos(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eColor colores[], int tamC, eMarca marcas[], int tamM);
+void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eMarca marcas[], int tamM, eColor colores[], int tamC);
+void servicioMasPedido(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
+void recaudadoEnFecha(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
+void autosEncerados(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eMarca marcas[], int tamM, eColor colores[], int tamC);
+void trabajosAutosBlancos(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
+void facturacionPulidos(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS);
+void MarcaMasCompletos(eMarca marcas[], int tamM, eAuto autos[], int tamA, eTrabajo trabajos[], int tamT);
 
 
 int main()
@@ -57,13 +62,13 @@ int main()
         {1050, "aaa111", 1002, 5002, 2012, 0},
         {1051, "bbb222", 1003, 5001, 2002, 0},
         {1052, "ccc333", 1001, 5000, 2009, 0},
-        {1053, "rtd487", 1000, 5004, 2017, 0},
-        {1054, "tes478 ", 1004, 5001, 2006, 0},
-        {1050, "FNM 789", 1002, 5003, 2012, 1},
-        {1050, "FNM 789", 1002, 5003, 2012, 1},
-        {1050, "FNM 789", 1002, 5003, 2012, 1},
-        {1050, "FNM 789", 1002, 5003, 2012, 1},
-        {1050, "FNM 789", 1002, 5003, 2012, 1},
+        {1053, "ddd444", 1000, 5004, 2017, 0},
+        {1054, "eee555", 1004, 5001, 2006, 0},
+        {1055, "fff666", 1002, 5000, 2014, 0},
+        {1056, "ggg777", 1004, 5002, 2018, 0},
+        {1057, "hhh888", 1000, 5001, 2007, 0},
+        {1058, "iii999", 1001, 5000, 2006, 0},
+        {1059, "jjj010", 1003, 5003, 2010, 0},
         {1050, "FNM 789", 1002, 5003, 2012, 1},
         {1050, "FNM 789", 1002, 5003, 2012, 1},
         {1050, "FNM 789", 1002, 5003, 2012, 1},
@@ -79,10 +84,10 @@ int main()
     {7005, "aaa111", 20003, {5,10,2019}, 0},
     {7006, "ccc333", 20001, {5,10,2019}, 0},
     {7007, "ccc333", 20003, {12,10,2019}, 0},
-    {7008, "tes478", 20002, {19,10,2019}, 0},
-    {7009, "rtd487", 20000, {20,10,2019}, 0},
-    {7000, "aaa111", 20003, {10,10,2019}, 1},
-    {7000, "aaa111", 20003, {10,10,2019}, 1},
+    {7008, "ddd444", 20002, {19,10,2019}, 0},
+    {7009, "eee555", 20000, {20,10,2019}, 0},
+    {7000, "fff666", 20001, {22,9,2019}, 0},
+    {7000, "ggg777", 20001, {22,9,2019}, 0},
     {7000, "aaa111", 20003, {10,10,2019}, 1},
     {7000, "aaa111", 20003, {10,10,2019}, 1},
     {7000, "aaa111", 20003, {10,10,2019}, 1}
@@ -128,6 +133,7 @@ case 3:
 case 4:
     //listar auto
     ordenarAutos(autos, TAMA, colores, TAMC, marcas, TAMM);
+    system("cls");
     mostrarAutos(autos, TAMA, colores, TAMC, marcas, TAMM);
     system("pause");
     break;
@@ -227,14 +233,19 @@ int menuInformes(){
 
     system("cls");
     printf("*** INFORMES ***\n\n");
-    printf("1- TRABAJOS EN FECHA DETERMINADA\n");
-    printf("2- CANTIDAD DE TRABAJO DETERMINADO\n");
-    printf("3- RECAUDADO POR MARCAS\n");
-    printf("4- RECAUDADO POR SERVICIOS\n");
-    printf("5- COLOR CON MAS LAVADOS COMPLETOS\n");
-    printf("6- DEUDA DE VEHICULO\n");
-    printf("7- RECAUDADO POR MARCAS\n");
-    printf("8- Salir\n\n");
+    printf("1- MOSTRAR AUTOS DE COLOR NEGRO\n");
+    printf("2- MOSTRAR AUTOS DE UNA MARCA SELECCIONADA\n");
+    printf("3- MOSTRAR TRABAJOS EFECTUADOS A UN AUTO\n");
+    printf("4- LISTAR AUTOS QUE NO TUVIERON TRABAJOS\n");
+    printf("5- IMPORTE A PAGAR POR AUTO SELECCIONADO\n");
+    printf("6- MOSTRAR EL SERVICIO MAS PEDIDO\n");
+    printf("7- MOSTRAR RECAUDACION EN FECHA\n");
+    printf("8- MOSTRAR AUTOS QUE REALIZARON UN ENCERADO(CON FECHA)\n");
+    printf("9- MOSTRAR TRABAJOS REALIZADOS A AUTOS BLANCOS\n");
+    printf("10- FACTURACION TOTAL POR LOS PULIDOS\n");
+    printf("11- INFORMAR LA MARCA DE AUTOS QUE EFECTUARON MAS LAVADOS COMPLETOS\n");
+    printf("12- LISTAR AUTOS QUE RECIBIERON TRABAJOS EN UNA FECHA DETERMINADA\n");
+    printf("13- Salir\n\n");
     printf("Ingrese opcion: ");
     scanf("%d", &opcion);
 
@@ -251,33 +262,54 @@ void informes(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores
         switch(menuInformes()){
 
     case 1:
-        //trabajos en fecha determinada
-        trabajosEnFecha(trabajos, tamT, servicios, tamS, autos, tamA);
+        //AUTOS DE COLOR NEGRO
+        listarAutosNegros(autos, tamA, colores, tamC, marcas, tamM);
         break;
     case 2:
-        //cantidad de x servicio
-        cantidadXServicio(trabajos, tamT, autos, tamA, servicios, tamS);
+        //AUTOS DE MARCA SELECCIONADA
+        autosXMarca(autos, tamA, marcas, tamM, colores, tamC);
         break;
     case 3:
-        //recaudad por marcas
-        recaudadoMarcas(trabajos, tamT, servicios, tamS, autos, tamA, marcas, tamM);
+        //TRABAJOS EFECTUADOS A AUTO
+        trabajosXAuto(trabajos, tamT, autos, tamA, servicios, tamS, colores, tamC, marcas, tamM);
         break;
     case 4:
-        //recaudado por servicios
-        recaudadoServicios(autos, tamA, trabajos, tamT, servicios, tamS);
+        //AUTOS QUE NO TUVIERON TRABAJOS
+        autosSinTrabajos(trabajos, tamT, autos, tamA, colores, tamC, marcas, tamM);
         break;
     case 5:
-        //color con mas lavados completos
-        colorMasCompletos(colores, tamC, autos, tamA, trabajos, tamT);
+        //IMPORTE A PAGAR POR AUTO SELECCIONADO
+        deudaXAuto(autos, tamA, trabajos, tamT, servicios, tamS, marcas, tamM, colores, tamC);
         break;
     case 6:
-        //deuda de determinado vehiculo
-        deudaXAuto(autos, tamA, trabajos, tamT, servicios, tamS);
+        //SERVICIO MAS PEDIDO
+        servicioMasPedido(trabajos, tamT, servicios, tamS);
         break;
     case 7:
-        //recaudado por marcas
+        //RECAUDACION EN FECHA PARTICULAR
+        recaudadoEnFecha(trabajos, tamT, servicios, tamS);
         break;
     case 8:
+        //AUTOS QUE REALIZARON ENCERADO C/ FECHA
+        autosEncerados(autos, tamA, trabajos, tamT, marcas, tamM, colores, tamC);
+        break;
+    case 9:
+        //TRABAJOS A AUTOS BLANCOS
+        trabajosAutosBlancos(autos, tamA, trabajos, tamT, servicios, tamS);
+        break;
+    case 10:
+        //FACTURACION TOTAL POR PULIDOS
+        facturacionPulidos(trabajos, tamT, servicios, tamS);
+        break;
+    case 11:
+        //INFORMAR LA MARCA DE AUTOS C/ MAS LAVADOS COMPLETOS
+        MarcaMasCompletos(marcas, tamM, autos, tamA, trabajos, tamT);
+        break;
+    case 12:
+        //AUTOS QUE RECIBIERON TRABAJOS EN FECHA DETERMINADA
+
+        break;
+    case 13:
         salir='y';
         break;
     default:
@@ -289,194 +321,134 @@ void informes(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores
 
 }
 
-int trabajosEnFecha(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eAuto autos[], int tamA){
+void listarAutosNegros (eAuto autos[], int tamA, eColor colores[], int tamC, eMarca marcas[], int tamM){
 
-    eFecha aux;
     int flag=0;
 
     system("cls");
-    printf("*** TRABAJOS EN FECHA DETERMINADA ***\n\n");
-    aux.dia = validarDia();
-    aux.mes = validarMes();
-    aux.anio = validarAnio();
+    printf("*** AUTOS COLOR NEGRO ***\n\n");
 
-    system("cls");
-    printf(" Trabajos en %02d/%02d/%4d: \n\n", aux.dia, aux.mes, aux.anio);
-    for(int i=0; i<tamT; i++){
+    for(int i=0; i<tamA; i++){
 
-        if(trabajos[i].fecha.dia == aux.dia && trabajos[i].fecha.mes == aux.mes && trabajos[i].fecha.anio == aux.anio && trabajos[i].isEmpty==0){
+        if(autos[i].idColor == 5000 && autos[i].isEmpty ==0){
 
-            mostrarTrabajo(trabajos[i], autos, tamA, servicios, tamS);
+            mostrarAuto(autos[i], marcas, tamM, colores, tamC);
             flag=1;
-
         }
-    }
 
+    }
     if(flag==0){
 
-        printf("--- No hay trabajos en la fecha indicada ---\n\n");
+        printf("--No hay autos color negro cargados en el sistema--\n\n");
 
     }
-    system("pause");
 
-return flag;
-}
-
-int cantidadXServicio(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eServicio servicios[], int tamS){
-
-    int contador=0;
-    int ok=0;
-    int idServicio;
-    char descServicio[20];
-
-    system("cls");
-    printf("*** CANTIDAD DE SERVICIO DETERMINADO ***\n\n");
-
-    mostrarServicios(servicios, tamS);
-    printf("\nIngrese ID del servicio del que desea saber cantidad realizada: ");
-    scanf("%d", &idServicio);
-    cargarDescServicio(idServicio, servicios, tamS, descServicio);
-
-    system("cls");
-    for(int i=0; i<tamT; i++){
-
-        if(trabajos[i].idServicio==idServicio && trabajos[i].isEmpty==0){
-
-            contador++;
-            ok=1;
-            mostrarTrabajo(trabajos[i], autos, tamA, servicios, tamS);
-        }
-    }
-
-    printf("\nCantidad de %ss: %d \n\n\n", descServicio, contador);
-
-    system("pause");
-    return ok;
-}
-
-void recaudadoMarcas(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eAuto autos[], int tamA, eMarca marcas[], int tamM){
-
-    float acumulador=0;
-
-    system("cls");
-    printf("*** RECAUDADO POR MARCAS ***\n\n");
-    for(int i=0; i<tamM; i++){
-
-        acumulador=0;
-
-        for(int j=0; j<tamA; j++){
-
-        if(marcas[i].idMarca == autos[j].idMarca && autos[j].isEmpty==0){
-
-            for(int k=0; k<tamT; k++){
-
-                if(strcmp(autos[j].patente, trabajos[k].patente)==0 && trabajos[k].isEmpty==0){
-
-                    for(int l=0;l<tamS; l++){
-
-                        if(trabajos[k].idServicio == servicios[l].idServicio){
-
-                            acumulador=acumulador+servicios[l].precio;
-
-                        }
-                    }
-                }
-            }
-        }
-   }
-
-    printf("Marca %s, recaudado: %.2f\n", marcas[i].descripcion, acumulador);
-
-}
     printf("\n\n");
     system("pause");
 }
 
-void recaudadoServicios(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+void autosXMarca(eAuto autos[], int tamA, eMarca marcas[], int tamM, eColor colores[], int tamC){
 
-    float acumulador;
+    int idMarca;
+    int flag=0;
+    char descMarca[20];
+
 
     system("cls");
-    for(int i=0; i<tamS; i++){
+    printf("*** AUTOS EN MARCA SELECCIONADA ***\n\n");
 
-        acumulador=0;
+    mostrarMarcas(marcas, tamM);
+    idMarca = validarMarca(marcas, tamM);
+    cargarDescMarca(idMarca, marcas, tamM, descMarca);
 
-        for(int j=0; j<tamT; j++){
+    system("cls");
+    printf("Autos marca %s\n\n",descMarca);
 
-            if(servicios[i].idServicio == trabajos[j].idServicio && trabajos[j].isEmpty==0){
+    for(int i=0; i<tamA; i++){
 
-                acumulador=acumulador + servicios[i].precio;
+        if(autos[i].idMarca==idMarca && autos[i].isEmpty==0){
 
-            }
+            mostrarAuto(autos[i], marcas, tamM, colores, tamC);
+            flag=1;
         }
-
-        printf("servicio %s, recaudado: %.2f\n", servicios[i].descriprcion, acumulador);
-
     }
 
+    if(flag==0){
+        printf("---No hay autos de esa marca en el sistema---");
+    }
+    printf("\n\n");
     system("pause");
 }
 
-void colorMasCompletos(eColor colores[], int tamC, eAuto autos[], int tamA, eTrabajo trabajos[], int tamT){
+void trabajosXAuto(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eServicio servicios[], int tamS, eColor colores[], int tamC, eMarca marcas[], int tamM){
 
-    int contadorC[tamC];
-    int mayor;
+    char patente[10];
     int flag=0;
 
-    for(int i=0; i<tamC; i++){
-        contadorC[i]=0;
-    }
+    system("cls");
+    printf("*** TRABAJOS REALIZADOS A AUTO SELECCIONADO ***\n\n");
+    mostrarAutos(autos, tamA, colores, tamC, marcas, tamM);
+    validarPatente(patente, autos, tamA);
 
     system("cls");
-    printf("*** Color con mas lavados completos ***\n\n");
+    printf("Trabajos realizados a auto de patente %s:\n\n", patente);
 
-    for(int i=0; i<tamC; i++){
+    for(int i=0; i<tamT; i++){
 
-        for(int j=0; j<tamA; j++){
+        if(strcmp(patente, trabajos[i].patente)==0 && trabajos[i].isEmpty==0){
 
-            if(autos[j].idColor == colores[i].idColor && autos[j].isEmpty==0){
-
-                for(int k=0; k<tamT; k++){
-
-                    if(trabajos[k].idServicio == 20003 && strcmp(autos[j].patente, trabajos[k].patente)==0 && trabajos[k].isEmpty==0){
-
-                        contadorC[i]++;
-
-                    }
-                }
-            }
-        }
-    }
-
-    for(int i=0; i<tamC; i++){
-
-        if(contadorC[i] > mayor || flag==0){
-
-            mayor=contadorC[i];
+            mostrarTrabajo(trabajos[i], autos, tamA, servicios, tamS);
             flag=1;
-
         }
+
+    }
+    if(flag==0){
+        printf("---No hay trabajos realizados---");
     }
 
-    for(int i=0; i<tamC; i++){
-
-        if(contadorC[i]==mayor){
-
-            printf("Color con mas lavados: %s, con %d lavados completos\n", colores[i].nombreColor, contadorC[i]);
-
-        }
-    }
+    printf("\n\n");
     system("pause");
-
 }
 
-void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+void autosSinTrabajos(eTrabajo trabajos[], int tamT, eAuto autos[], int tamA, eColor colores[], int tamC, eMarca marcas[], int tamM){
+
+    int flag=0;
+
+    system("cls");
+    printf("*** AUTOS SIN TRABAJOS REALIZADOS ***\n\n");
+
+    for(int i=0; i<tamA; i++){
+        flag=0;
+        for(int j=0; j<tamT; j++){
+
+            if(strcmp(trabajos[j].patente, autos[i].patente)==0 && trabajos[j].isEmpty == 0 && autos[i].isEmpty==0){
+             flag=1;
+            }
+
+        }
+
+        if(flag==0 && autos[i].isEmpty==0){
+
+            mostrarAuto(autos[i], marcas, tamM, colores, tamC);
+
+        }
+
+    }
+
+    printf("\n\n");
+    system("pause");
+}
+
+void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS, eMarca marcas[], int tamM, eColor colores[], int tamC){
 
     char patente[10];
     float deuda=0;
 
     system("cls");
     printf("*** Deuda de Vehiculo ***\n\n");
+
+    mostrarAutos(autos, tamA, colores, tamC, marcas, tamM);
+    printf("\n");
     validarPatente(patente, autos, tamA);
 
     for(int i=0; i<tamT; i++ ){
@@ -494,8 +466,239 @@ void deudaXAuto(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServici
         }
     }
 
+    system("cls");
     printf("\nPatente: %s\n", patente);
     printf("Deuda: $%.2f\n\n\n", deuda);
 
     system("pause");
 }
+
+void servicioMasPedido(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+
+    int cantidadS[tamS];
+    int flag=0;
+    int mayor;
+
+    system("cls");
+    printf("*** SERVICIO MAS PEDIDO ***\n\n");
+    for(int i=0; i<tamS; i++){
+        cantidadS[i]=0;
+    }
+
+    for(int i=0; i<tamS; i++){
+
+        for(int j=0; j<tamT; j++){
+
+            if(servicios[i].idServicio == trabajos[j].idServicio && trabajos[j].isEmpty==0){
+
+                cantidadS[i]++;
+
+            }
+        }
+    }
+
+
+    for(int i=0; i<tamS; i++){
+
+
+        if(cantidadS[i]>mayor || flag==0){
+            mayor=cantidadS[i];
+            flag=1;
+        }
+    }
+
+    for(int i=0; i<tamS; i++){
+
+        if(cantidadS[i] == mayor){
+
+            printf("Servicio: %s\n", servicios[i].descriprcion);
+            printf("Cantidad: %d\n\n", cantidadS[i]);
+        }
+    }
+
+        system("pause");
+}
+
+void recaudadoEnFecha(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+
+    eFecha aux;
+    int flag=0;
+    float acumulador=0;
+
+    system("cls");
+    printf("*** RECAUDADO EN FECHA DETERMINADA ***\n\n");
+    aux.dia = validarDia();
+    aux.mes = validarMes();
+    aux.anio = validarAnio();
+
+    system("cls");
+    printf(" \nRecaudado en %02d/%02d/%4d: ", aux.dia, aux.mes, aux.anio);
+
+    for(int i=0; i<tamT; i++){
+
+        if(trabajos[i].fecha.dia == aux.dia && trabajos[i].fecha.mes == aux.mes && trabajos[i].fecha.anio == aux.anio && trabajos[i].isEmpty==0){
+
+            acumulador+=cargarPrecioServicio(trabajos[i].idServicio, servicios, tamS);
+            flag=1;
+
+        }
+    }
+    printf("$%.2f\n\n", acumulador);
+    if(flag==0){
+
+        printf("--- No hay trabajos en la fecha indicada ---\n\n");
+
+    }
+
+    system("pause");
+}
+
+void autosEncerados(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eMarca marcas[], int tamM, eColor colores[], int tamC){
+
+
+    system("cls");
+    printf("*** AUTOS QUE RECIBIERON ENCERADO ***\n\n");
+
+    for(int i=0; i<tamA; i++){
+
+        for(int j=0; j<tamT; j++){
+
+            if(strcmp(autos[i].patente, trabajos[j].patente)==0 && autos[i].isEmpty==0 && trabajos[j].isEmpty==0 && trabajos[j].idServicio == 20002){
+
+                printf("Auto: \n");
+                mostrarAuto(autos[i], marcas, tamM, colores, tamC);
+                printf("Fecha de encerado: %02d/%02d/%4d\n\n", trabajos[j].fecha.dia, trabajos[j].fecha.mes, trabajos[j].fecha.anio);
+            }
+
+        }
+
+    }
+        system("pause");
+}
+
+void trabajosAutosBlancos(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+
+    system("cls");
+    printf("*** TRABAJOS REALIZADOS A AUTOS BLANCOS ***\n\n");
+
+    for(int i=0; i<tamA; i++){
+
+        if(autos[i].idColor == 5001 && autos[i].isEmpty==0){
+
+            for(int j=0; j<tamT; j++){
+
+                if(strcmp(autos[i].patente, trabajos[j].patente)==0 && trabajos[j].isEmpty==0){
+
+                    mostrarTrabajo(trabajos[j], autos, tamA, servicios, tamS);
+
+                }
+            }
+        }
+    }
+    system("pause");
+}
+
+void facturacionPulidos(eTrabajo trabajos[], int tamT, eServicio servicios[], int tamS){
+
+    float acumulador=0;
+
+    system("cls");
+    printf("*** FACTURACION TOTAL PULIDOS***\n\n");
+    for(int i=0; i<tamT; i++){
+
+        if(trabajos[i].idServicio == 20001 && trabajos[i].isEmpty==0){
+
+            acumulador+=cargarPrecioServicio(trabajos[i].idServicio, servicios, tamS);
+
+        }
+    }
+
+    printf("Facturado: %.2f\n\n", acumulador);
+    system("pause");
+}
+
+void MarcaMasCompletos(eMarca marcas[], int tamM, eAuto autos[], int tamA, eTrabajo trabajos[], int tamT){
+
+    int contadorC[tamM];
+    int mayor;
+    int flag=0;
+
+    for(int i=0; i<tamM; i++){
+        contadorC[i]=0;
+    }
+
+    system("cls");
+    printf("*** Marca con mas lavados completos ***\n\n");
+
+    for(int i=0; i<tamM; i++){
+
+        for(int j=0; j<tamA; j++){
+
+            if(autos[j].idMarca == marcas[i].idMarca && autos[j].isEmpty==0){
+
+                for(int k=0; k<tamT; k++){
+
+                    if(trabajos[k].idServicio == 20003 && strcmp(autos[j].patente, trabajos[k].patente)==0 && trabajos[k].isEmpty==0){
+
+                        contadorC[i]++;
+
+                    }
+                }
+            }
+        }
+    }
+
+    for(int i=0; i<tamM; i++){
+
+        if(contadorC[i] > mayor || flag==0){
+
+            mayor=contadorC[i];
+            flag=1;
+
+        }
+    }
+
+    for(int i=0; i<tamM; i++){
+
+        if(contadorC[i]==mayor){
+
+            printf("Marca con mas lavados completos: %s, con %d lavados completos\n\n\n", marcas[i].descripcion, contadorC[i]);
+
+        }
+    }
+    system("pause");
+
+}
+
+/*void autosTrabajoXFecha(eAuto autos[], int tamA, eTrabajo trabajos[], int tamT){
+
+    eFecha aux;
+    aux.dia = validarDia();
+    aux.mes = validarMes();
+    aux.anio = validarAnio();
+
+    for(int i=0; i<tamT; i++){
+
+        if(trabajos[i].fecha.dia == aux.dia && trabajos[i].fecha.mes == aux.mes && trabajos[i].fecha.anio == aux.anio && trabajos[i].isEmpty){
+
+            for(int j=0; j<tamA; j++){
+
+                if(strcmp(trabajos[i].patente, autos[j].patente)==0 && autos[j].isEmpty==0);
+
+            }
+
+        }
+
+
+    }
+
+
+
+
+}*/
+
+
+
+
+
+

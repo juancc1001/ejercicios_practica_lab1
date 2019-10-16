@@ -241,7 +241,7 @@ void mostrarAuto(eAuto x, eMarca marcas[], int tamM, eColor colores[], int tamC)
 void mostrarAutos(eAuto autos[], int tamA,  eColor colores[], int tamC, eMarca marcas[], int tamM)
 {
     int flag = 0;
-    system("cls");
+
     printf("**** Listado de Autos ****\n\n");
 
     printf("id Auto      Patente       Marca           Color    Modelo\n\n");

@@ -300,3 +300,78 @@
 	"servicios.h"
 	"trabajos.h"
 
+1571229160 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\auto.h
+	"colores.h"
+	"marcas.h"
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\colores.h
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\marcas.h
+
+1571225783 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\colores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"colores.h"
+
+1571225783 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"fecha.h"
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\fecha.h
+
+1571225783 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\marcas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"marcas.h"
+
+1571225783 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\servicios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"servicios.h"
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\servicios.h
+
+1571225783 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\trabajos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"trabajos.h"
+	"servicios.h"
+	"fecha.h"
+
+1571225783 c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\trabajos.h
+	"auto.h"
+	"servicios.h"
+	"fecha.h"
+
+1571233842 source:c:\users\alumno\desktop\ejercicios_practica_lab1\parcial_carvallo_cinformes\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"auto.h"
+	"colores.h"
+	"marcas.h"
+	"servicios.h"
+	"trabajos.h"
+
