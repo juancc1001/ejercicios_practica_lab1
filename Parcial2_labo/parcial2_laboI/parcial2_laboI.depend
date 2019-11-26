@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1574804115 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial2_laboi\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574802008 c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial2_laboi\linkedlist.h
+
+1574809255 source:c:\users\pc-1\desktop\juan el programadore\ejercicios_practica_lab1\parcial2_laboi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+
