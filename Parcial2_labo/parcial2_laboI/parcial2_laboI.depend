@@ -14,3 +14,38 @@
 	<ctype.h>
 	"LinkedList.h"
 
+1574863417 source:c:\users\alumno\desktop\parcial2_laboi\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574802010 c:\users\alumno\desktop\parcial2_laboi\linkedlist.h
+
+1574863113 source:c:\users\alumno\desktop\parcial2_laboi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"cachorros.h"
+	"controller.h"
+
+1574863680 c:\users\alumno\desktop\parcial2_laboi\cachorros.h
+
+1574863667 source:c:\users\alumno\desktop\parcial2_laboi\cachorros.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"cachorros.h"
+
+1574862927 source:c:\users\alumno\desktop\parcial2_laboi\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"cachorros.h"
+
+1574862927 c:\users\alumno\desktop\parcial2_laboi\controller.h
+

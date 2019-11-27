@@ -35,6 +35,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="LinkedList.h" />
+		<Unit filename="cachorros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cachorros.h" />
+		<Unit filename="controller.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="controller.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

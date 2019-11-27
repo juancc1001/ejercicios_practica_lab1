@@ -648,35 +648,21 @@ int ll_map(LinkedList* this, int (*pFunc)(void*)){
     return rAux;
 }
 
-/*int mapTipo(void* dominio){
-
-    eDominio* aux = (eDominio*) dominio;
-
-    if(isdigit(aux->dominio[0])){
-
-        setTipo(aux, 'M');
-
-    }else{
-
-        setTipo(aux, 'A');
-    }
-
-    return 1;
-}*/
 
 
-LinkedList* ll_filter(LinkedList* this, int (*pFunc) (void*)){
+LinkedList* ll_filter(LinkedList* this, int (*fn) (void*)){
 
     void* auxElment = NULL;
     int control;
-    LinkedList* newll = ll_newLinkedList();
+    LinkedList* newll = NULL;
 
-    if(this!=NULL && pFunc!=NULL && newll!=NULL){
+    if(this!=NULL && fn!=NULL ){
+            newll = ll_newLinkedList();
 
         for(int i=0; i<ll_len(this); i++){
 
             auxElment = ll_get(this, i);
-            control = pFunc(auxElment);
+            control = fn(auxElment);
 
             if(control == 1){
 
